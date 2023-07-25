@@ -1,20 +1,33 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Generate PDF
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content [fullscreen]="true" forceOverscroll="false">
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Super Heroes</ion-label>
+      <ion-button (click)="showAllContent = !showAllContent"
+        [ngStyle]="{'--color': showAllContent ? 'red' : 'blue','--background': showAllContent ? 'none' : 'none'}">
+        {{ showAllContent ? 'See Less' : 'See All' }}
+      </ion-button>
+    </ion-list-header>
+    <ion-item *ngFor="let hero of dcSuperheroes;index as i" [ngStyle]="{'--background': getCustomBackgroundColor(i)}">
+      <span class="circle" [ngStyle]="{'background': getCircleColor(i)}"></span>
+      <ion-label>{{hero.alias}} &nbsp;&nbsp;({{hero.name}})</ion-label>
+    </ion-item>
+    <div *ngIf="showAllContent" class="additional-content">
+      <ion-item *ngFor="let marvelHero of marvelSuperheroes;index as i"
+        [ngStyle]="{'--background': getCustomBackgroundColor(i)}">
+        <span class="circle" [ngStyle]="{'background': getCircleColor(i)}"></span>
+        <ion-label>{{marvelHero.alias}} &nbsp;&nbsp;({{marvelHero.name}})</ion-label>
+      </ion-item>
+    </div>
+  </ion-list>
+  <ion-button (click)="openPDF()" expand="block">
+    view PDF
+  </ion-button>
 </ion-content>

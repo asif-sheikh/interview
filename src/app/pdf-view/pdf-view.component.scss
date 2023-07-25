@@ -1,0 +1,16 @@
+ion-toolbar {
+  --background: #40bfbf;
+  --color: #000;
+
+  ion-buttons {
+    ion-button {
+      --color: #000;
+
+    }
+  }
+}
+
+ion-list {
+  display: flex;
+  flex-direction: column;
+}
