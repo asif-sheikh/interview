@@ -1,0 +1,7 @@
+{
+  "name": "pdfMaker",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
